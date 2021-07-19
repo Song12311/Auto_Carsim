@@ -1,0 +1,44 @@
+import win32gui,win32con,win32api,time
+
+#para_hld = win32gui.FindWindow(None, "无标题.txt - 记事本")#"无标题.txt - 记事本"就是窗口名称
+#donghua=win32gui.FindWindow(None, "VS Visualizer-CarSim-Motor_Fault_Auto<*ChengbiaoSONG_Auto>")
+#donghua=win32gui.FindWindow(None, "VS Visualizer - CarSim - On Center Steer Test<Steering Tests>")
+donghua=win32gui.FindWindow(None, None)
+title = win32gui.GetWindowText(donghua)
+classname = win32gui.GetClassName(donghua)
+print(donghua)
+print(title)
+print(classname)
+#On Center Steer Test - Steering Tests.vsrap
+
+
+def key(code):
+    win32api.keybd_event(code, 0, 0, 0)  # enter
+    win32api.keybd_event(code, 0, win32con.KEYEVENTF_KEYUP, 0)  # 释放按键
+
+def l_click(x, y):
+    # 将鼠标移动到坐标处
+    win32api.SetCursorPos((x, y))
+    # 左点击
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
+    time.sleep(2)
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
+
+
+'''
+
+if para_hld != 0:
+     title = win32gui.GetWindowText(para_hld)
+     classname = win32gui.GetClassName(para_hld)
+     win32gui.SetForegroundWindow(para_hld)
+     time.sleep(0.1)
+     key(13)
+     key(65)
+     key(66)#输入法打a
+else:
+     print('not found windows!')
+'''
+
+#l_click(23, 1059)#点击开始位置
+#win32api.MessageBox(0,"Hello PYwin32","MessageBox",win32con.MB_OK | win32con.MB_ICONWARNING)
+print('1')
